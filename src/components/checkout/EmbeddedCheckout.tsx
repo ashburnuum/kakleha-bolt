@@ -18,12 +18,18 @@ import {
   type PaymentMethod,
   type CheckoutPayload,
 } from '@/config/product';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+let supabaseClient: SupabaseClient | null = null;
+function getSupabase(): SupabaseClient {
+  if (!supabaseClient) {
+    supabaseClient = createClient(
+      import.meta.env.VITE_SUPABASE_URL,
+      import.meta.env.VITE_SUPABASE_ANON_KEY
+    );
+  }
+  return supabaseClient;
+}
 
 interface EmbeddedCheckoutProps {
   selectedPackageId: string;
@@ -39,6 +45,7 @@ interface FormErrors {
   postcode?: string;
   state?: string;
   terms?: string;
+  [key: string]: string | undefined;
 }
 
 export default function EmbeddedCheckout({ selectedPackageId, onPackageSelect }: EmbeddedCheckoutProps) {
@@ -133,7 +140,7 @@ export default function EmbeddedCheckout({ selectedPackageId, onPackageSelect }:
     };
 
     try {
-      const { data, error } = await supabase.from('orders').insert({
+      const { data, error } = await getSupabase().from('orders').insert({
         idempotency_key: idempotencyKey,
         package_id: payload.packageId,
         customer_name: payload.customer.fullName,

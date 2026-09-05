@@ -13,7 +13,6 @@ export default function ScrollProgressBar() {
       setProgress(scrolled);
       scaleX.set(scrolled);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scaleX]);
@@ -22,7 +21,7 @@ export default function ScrollProgressBar() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-kakleha-red origin-left z-[9999]"
+      className="fixed top-0 left-0 right-0 h-[2px] bg-ms-gold origin-left z-[9999]"
       style={{ scaleX }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

@@ -1,36 +1,60 @@
-import { productConfig } from '@/config/product';
+import { brandConfig } from '@/config/brand';
 
 const quickLinks = [
-  { label: 'Produk', href: '#' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Shop', href: '#collections' },
+  { label: 'Koleksi Baru', href: '#new-arrivals' },
+  { label: 'Pilihan Terlaris', href: '#best-sellers' },
+  { label: 'Tentang Kami', href: '#about' },
   { label: 'Hubungi Kami', href: '#' },
-  { label: 'Polisi Penghantaran', href: '#' },
 ];
 
 const policyLinks = [
-  { label: 'Polisi Privasi', href: '#' },
-  { label: 'Terma & Syarat', href: '#' },
-  { label: 'Pertukaran / Pemulangan', href: '#' },
+  { label: 'Polisi Penghantaran', href: brandConfig.policies.shipping },
+  { label: 'Polisi Pemulangan', href: brandConfig.policies.returns },
+  { label: 'Polisi Privasi', href: brandConfig.policies.privacy },
+  { label: 'Terma & Syarat', href: brandConfig.policies.terms },
 ];
+
+const socials = [
+  { label: 'Instagram', href: brandConfig.contact.instagram },
+  { label: 'Facebook', href: brandConfig.contact.facebook },
+  { label: 'TikTok', href: brandConfig.contact.tiktok },
+  { label: 'WhatsApp', href: brandConfig.contact.whatsapp },
+];
+
+const paymentMethods = ['Visa', 'Mastercard', 'FPX', 'GrabPay', 'TnG'];
 
 export default function Footer() {
   return (
-    <footer className="bg-kakleha-charcoal text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <p className="font-heading font-bold text-lg mb-3">{productConfig.brandName}</p>
-            <p className="text-sm text-kakleha-sand/70 leading-relaxed">
-              Seluar dalam high-waist yang lembut, anjal dan dibuat untuk keselesaan harian wanita Malaysia.
+    <footer className="bg-ms-charcoal-light text-white/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          <div className="col-span-2 lg:col-span-1">
+            <span className="font-heading text-xl font-semibold text-white mb-4 block">
+              {brandConfig.name}
+            </span>
+            <p className="text-sm leading-relaxed mb-6 max-w-sm">
+              {brandConfig.description}
             </p>
+            <div className="flex items-center gap-4">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="text-xs text-white/50 hover:text-ms-gold-light transition-colors"
+                >
+                  {social.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
-            <p className="text-sm font-semibold mb-3 text-kakleha-sand/90">Pautan</p>
-            <ul className="space-y-1">
+            <h4 className="text-xs tracking-[0.15em] uppercase text-white/40 mb-5">Pautan Pantas</h4>
+            <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-kakleha-sand/60 hover:text-white transition-colors inline-block py-1.5">
+                  <a href={link.href} className="text-sm hover:text-ms-gold-light transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -39,11 +63,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold mb-3 text-kakleha-sand/90">Polisi</p>
-            <ul className="space-y-1">
+            <h4 className="text-xs tracking-[0.15em] uppercase text-white/40 mb-5">Polisi</h4>
+            <ul className="space-y-3">
               {policyLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-kakleha-sand/60 hover:text-white transition-colors inline-block py-1.5">
+                  <a href={link.href} className="text-sm hover:text-ms-gold-light transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -52,20 +76,31 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold mb-3 text-kakleha-sand/90">Hubungi</p>
-            <ul className="space-y-2 text-sm text-kakleha-sand/60">
-              <li>[INSERT EMAIL]</li>
+            <h4 className="text-xs tracking-[0.15em] uppercase text-white/40 mb-5">Hubungi</h4>
+            <ul className="space-y-3 text-sm">
+              <li>{brandConfig.contact.email}</li>
+              <li>
+                <a href={brandConfig.contact.whatsapp} className="hover:text-ms-gold-light transition-colors">
+                  WhatsApp Kami
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-kakleha-sand/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-kakleha-sand/40">
-            &copy; {new Date().getFullYear()} {productConfig.brandName}. Semua hak terpelihara.
-          </p>
-          <p className="text-xs text-kakleha-sand/40">
-            [MASUKKAN MAKLUMAT PERNIAGAAN]
-          </p>
+        <div className="mt-14 pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-white/30">
+              &copy; {new Date().getFullYear()} {brandConfig.name}. Hak cipta terpelihara.
+            </p>
+            <div className="flex items-center gap-3">
+              {paymentMethods.map((method) => (
+                <span key={method} className="text-[10px] px-2.5 py-1 rounded border border-white/10 text-white/40">
+                  {method}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

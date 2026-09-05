@@ -1,127 +1,114 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, Ruler, Star } from 'lucide-react';
-import { productConfig, trackEvent } from '@/config/product';
-
-const REVIEW_COUNT = 2400;
-const RATING_VALUE = 4.8;
+import { Truck, RefreshCw, ShieldCheck } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-gradient-to-b from-kakleha-cream to-white">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-kakleha-blush opacity-60 blur-3xl" />
-        <div className="absolute bottom-0 -left-20 w-72 h-72 rounded-full bg-kakleha-sand/40 blur-3xl" />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 lg:pt-20 lg:pb-24">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left order-2 lg:order-1"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-kakleha-blush text-kakleha-burgundy text-xs font-semibold tracking-wide uppercase mb-5">
-              <div className="flex items-center gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={12} className="text-kakleha-red fill-kakleha-red" />
-                ))}
-              </div>
-              <span>{RATING_VALUE} · {REVIEW_COUNT.toLocaleString('en')} ulasan</span>
-            </div>
-
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[52px] lg:leading-[1.12] text-kakleha-charcoal text-balance mb-5">
-              Tak Perlu Lagi Tarik Seluar Dalam Setiap Kali Duduk.
-            </h1>
-
-            <p className="text-base sm:text-lg text-kakleha-grey leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
-              Potongan high-waist yang duduk elok, fabrik yang ikut bentuk badan — pakai dari pagi sampai malam tanpa rasa nak betulkan.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 justify-center lg:justify-start">
-              <BenefitPill icon={<ShieldCheck size={16} />} text="Cover perut dengan elok" />
-              <BenefitPill icon={<Zap size={16} />} text="Lembut & sangat anjal" />
-              <BenefitPill icon={<Ruler size={16} />} text="Muat pinggang & pinggul besar" />
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start mt-8">
-              <a
-                href="#checkout"
-                onClick={() => trackEvent('click_hero_cta')}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-kakleha-red text-white font-semibold text-base hover:bg-kakleha-burgundy transition-all hover:shadow-lg hover:shadow-kakleha-red/20"
-              >
-                Buat Pesanan Sekarang
-              </a>
-              <a
-                href="#reviews"
-                className="text-sm font-medium text-kakleha-grey hover:text-kakleha-charcoal transition-colors underline underline-offset-4"
-              >
-                Lihat Review
-              </a>
-            </div>
-
-            <p className="mt-5 text-xs text-kakleha-grey text-center lg:text-left">
-              COD Tersedia · Checkout Selamat · Pos Seluruh Malaysia
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative flex items-center justify-center order-1 lg:order-2"
-          >
-            <div className="absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-kakleha-blush/70 blur-2xl" />
-
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] rounded-3xl bg-white shadow-xl shadow-kakleha-red/5 border border-kakleha-blush flex items-center justify-center">
-              <div className="text-center text-kakleha-grey text-sm p-8">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-kakleha-blush flex items-center justify-center">
-                  <span className="text-3xl font-heading font-bold text-kakleha-red">K</span>
-                </div>
-                <p className="font-medium text-kakleha-charcoal">[Imej Produk Utama]</p>
-                <p className="text-xs mt-1">Placeholder untuk imej produk KakLeha™</p>
-              </div>
-            </div>
-
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-6 right-2 sm:right-4 bg-white rounded-2xl shadow-lg px-3 py-2 text-xs font-medium border border-kakleha-blush"
-            >
-              <span className="text-kakleha-grey">95% Nylon · 5% Spandex</span>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-10 left-0 sm:left-4 bg-white rounded-2xl shadow-lg px-3 py-2 text-xs font-medium border border-kakleha-blush"
-            >
-              <span className="text-kakleha-charcoal">Pinggang {productConfig.measurements.waist}</span>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-4 right-4 sm:right-8 bg-white rounded-2xl shadow-lg px-3 py-2 text-xs font-medium border border-kakleha-blush"
-            >
-              <span className="text-kakleha-charcoal">Pinggul {productConfig.measurements.hip}</span>
-            </motion.div>
-
-            <div className="absolute top-4 left-2 sm:left-6 bg-kakleha-red text-white rounded-full px-3 py-1 text-xs font-semibold shadow-md">
-              Free Size
-            </div>
-          </motion.div>
+    <section id="hero" className="relative h-screen min-h-[600px] max-h-[1000px] overflow-hidden">
+      <motion.div
+        className="absolute inset-0 bg-ms-charcoal"
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.05 }}
+        transition={{ duration: 20, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+        <div className="w-full h-full flex items-center justify-center">
+          <span className="text-white/[0.03] font-heading text-[200px] sm:text-[300px] font-bold select-none">MS</span>
         </div>
+      </motion.div>
+
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="max-w-2xl"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-ms-gold/40 bg-ms-gold/10 text-ms-gold-light text-xs font-medium tracking-widest uppercase mb-6"
+          >
+            Koleksi Baru 2026
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-[1.1] mb-6"
+          >
+            Keanggunan Dalam{' '}
+            <span className="italic text-ms-gold-light">Setiap</span>{' '}
+            Jahitan
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="text-base sm:text-lg text-white/70 leading-relaxed max-w-lg mb-8"
+          >
+            Pakaian muslimah premium yang menggabungkan keanggunan moden dengan kesopanan. Direka khas untuk wanita yang menghargai kualiti.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+            className="flex flex-col sm:flex-row gap-3"
+          >
+            <a
+              href="#new-arrivals"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-ms-gold text-white font-medium text-sm tracking-wide uppercase hover:bg-ms-gold-light transition-all hover:shadow-lg hover:shadow-ms-gold/20"
+            >
+              Terokai Koleksi
+            </a>
+            <a
+              href="#best-sellers"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/30 text-white font-medium text-sm tracking-wide uppercase hover:bg-white/10 transition-all"
+            >
+              Pilihan Terlaris
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
+            className="flex flex-wrap items-center gap-4 sm:gap-6 mt-10"
+          >
+            <TrustPill icon={<Truck size={14} />} text="Penghantaran Percuma" />
+            <TrustPill icon={<RefreshCw size={14} />} text="Pemulangan Mudah" />
+            <TrustPill icon={<ShieldCheck size={14} />} text="Checkout Selamat" />
+          </motion.div>
+        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center pt-2"
+        >
+          <div className="w-1 h-2 rounded-full bg-white/50" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
 
-function BenefitPill({ icon, text }: { icon: React.ReactNode; text: string }) {
+function TrustPill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/80 border border-kakleha-blush text-xs sm:text-sm text-kakleha-charcoal">
-      <span className="text-kakleha-red flex-shrink-0">{icon}</span>
-      <span>{text}</span>
-    </div>
+    <span className="flex items-center gap-2 text-white/50 text-xs sm:text-sm">
+      <span className="text-ms-gold-light">{icon}</span>
+      {text}
+    </span>
   );
 }

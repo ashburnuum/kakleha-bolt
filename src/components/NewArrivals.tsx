@@ -1,0 +1,57 @@
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { products } from '@/config/brand';
+import ProductCard from '@/components/ProductCard';
+
+const newProducts = products.filter((p) => p.isNew);
+
+export default function NewArrivals() {
+  return (
+    <section id="new-arrivals" className="py-16 sm:py-20 lg:py-24 bg-ms-ivory">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex items-end justify-between mb-10 sm:mb-14"
+        >
+          <div>
+            <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Terkini</p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ms-charcoal">Baru Tiba</h2>
+          </div>
+          <a
+            href="#"
+            className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-ms-grey hover:text-ms-gold transition-colors group"
+          >
+            Lihat Semua
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {newProducts.map((product, i) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <ProductCard product={product} />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="sm:hidden mt-8 text-center">
+          <a
+            href="#"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-ms-grey hover:text-ms-gold transition-colors"
+          >
+            Lihat Semua
+            <ArrowRight size={14} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}

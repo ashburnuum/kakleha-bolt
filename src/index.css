@@ -11,18 +11,26 @@
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    color: #262326;
+    color: #1A1A1A;
     background-color: #FFFFFF;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Manrope', system-ui, sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

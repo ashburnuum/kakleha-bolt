@@ -2,14 +2,14 @@ import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const ugcData = [
-  { name: 'Aisyah K.', quote: 'Kain dia memang premium, jatuh cantik sangat.' },
-  { name: 'Nur Fazira', quote: 'Pakai ke office pun nampak elegant. Love it!' },
-  { name: 'Siti Hajar', quote: 'Dah jadi customer setia. Setiap koleksi mesti beli.' },
-  { name: 'Farah N.', quote: 'Best sangat cutting dia, tak ketat tapi kemas.' },
-  { name: 'Zarina M.', quote: 'Packaging cantik, boleh buat hadiah terus.' },
-  { name: 'Amira S.', quote: 'Selesa pakai seharian, kain breathable.' },
-  { name: 'Balkis A.', quote: 'Warna tak luntur walaupun dah basuh banyak kali.' },
-  { name: 'Hana R.', quote: 'Memang berbaloi dengan harganya. Top quality.' },
+  { name: 'Aisyah K.', quote: 'The fabric is truly premium, drapes so beautifully.', image: 'https://images.pexels.com/photos/8063385/pexels-photo-8063385.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Nur Fazira', quote: 'Wear it to the office and still look elegant. Love it!', image: 'https://images.pexels.com/photos/6700500/pexels-photo-6700500.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Siti Hajar', quote: 'A loyal customer now. Every collection is a must-buy.', image: 'https://images.pexels.com/photos/33539326/pexels-photo-33539326.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Farah N.', quote: 'Amazing cut — not tight but still so neat and flattering.', image: 'https://images.pexels.com/photos/35150034/pexels-photo-35150034.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Zarina M.', quote: 'Packaging is gorgeous, perfect as a gift on its own.', image: 'https://images.pexels.com/photos/31841220/pexels-photo-31841220.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Amira S.', quote: 'Comfortable all day long, the fabric is so breathable.', image: 'https://images.pexels.com/photos/5991638/pexels-photo-5991638.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Balkis A.', quote: 'Colours stay vibrant even after so many washes.', image: 'https://images.pexels.com/photos/19549268/pexels-photo-19549268.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Hana R.', quote: 'Totally worth the price. Top quality through and through.', image: 'https://images.pexels.com/photos/17349806/pexels-photo-17349806.jpeg?auto=compress&cs=tinysrgb&w=400' },
 ];
 
 export default function UGCCarousel() {
@@ -20,7 +20,7 @@ export default function UGCCarousel() {
     const el = scrollRef.current;
     if (!el) return;
     let animId: number;
-    let speed = 0.5;
+    const speed = 0.5;
 
     function step() {
       if (!isPaused && el) {
@@ -46,9 +46,9 @@ export default function UGCCarousel() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Gaya Pelanggan</p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ms-charcoal">
-            Gaya Mereka, <span className="italic">Inspirasi</span> Anda
+          <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Customer Style</p>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">
+            Their Style, <span className="text-ms-gold">Your</span> Inspiration
           </h2>
         </motion.div>
       </div>
@@ -68,12 +68,15 @@ export default function UGCCarousel() {
           {doubled.map((item, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] aspect-[3/4] rounded-2xl bg-ms-champagne relative overflow-hidden group"
+              className="flex-shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] aspect-[3/4] rounded-2xl relative overflow-hidden group"
             >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-ms-grey-muted text-[10px]">UGC</span>
-              </div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <p className="text-white text-sm font-medium leading-snug mb-1">"{item.quote}"</p>
                 <p className="text-white/60 text-xs">{item.name}</p>

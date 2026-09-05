@@ -14,7 +14,7 @@ export default function AsSeenOn() {
           viewport={{ once: true }}
           className="text-center text-xs tracking-[0.2em] uppercase text-ms-grey-light mb-8"
         >
-          Seperti Yang Dilihat Di
+          As Seen On
         </motion.p>
         <div className="flex items-center justify-center gap-8 sm:gap-12 lg:gap-16 flex-wrap">
           {mediaOutlets.map((name, i) => (

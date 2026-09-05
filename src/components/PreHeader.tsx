@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Truck, Gift, Sparkles } from 'lucide-react';
 
 const announcements = [
-  { icon: Truck, text: 'Penghantaran Percuma untuk pesanan RM150+' },
-  { icon: Gift, text: 'Koleksi Baru Telah Tiba — Terokai Sekarang' },
-  { icon: Sparkles, text: 'COD Tersedia Seluruh Malaysia' },
+  { icon: Truck, text: 'Free Shipping on orders RM150+' },
+  { icon: Gift, text: 'New Collection Has Arrived — Shop Now' },
+  { icon: Sparkles, text: 'COD Available Nationwide' },
 ];
 
 export default function PreHeader() {
@@ -22,7 +22,7 @@ export default function PreHeader() {
   const Icon = current.icon;
 
   return (
-    <div className="bg-ms-charcoal text-white text-xs py-2.5 px-4 overflow-hidden relative">
+    <div className="bg-ms-gold text-white text-xs py-2.5 px-4 overflow-hidden relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -33,8 +33,8 @@ export default function PreHeader() {
             transition={{ duration: 0.3 }}
             className="flex items-center gap-2"
           >
-            <Icon size={13} className="text-ms-gold-light flex-shrink-0" />
-            <span className="tracking-wide">{current.text}</span>
+            <Icon size={13} className="flex-shrink-0" />
+            <span className="tracking-wide font-medium">{current.text}</span>
           </motion.div>
         </AnimatePresence>
       </div>

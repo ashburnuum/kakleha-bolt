@@ -5,14 +5,15 @@ export default {
     extend: {
       colors: {
         ms: {
-          gold: '#B8860B',
-          'gold-light': '#D4A843',
-          'gold-pale': '#E8D5A3',
-          champagne: '#F5EFE0',
+          gold: '#C2B067',
+          'gold-dark': '#A89A55',
+          'gold-light': '#D4C57E',
+          'gold-pale': '#EDE5C8',
+          champagne: '#F5F0E3',
           ivory: '#FDFAF3',
           cream: '#FBF7EE',
-          charcoal: '#1A1A1A',
-          'charcoal-light': '#2D2D2D',
+          charcoal: '#2C2C2C',
+          'charcoal-light': '#4A4A4A',
           grey: '#6B6B6B',
           'grey-light': '#9A9A9A',
           'grey-muted': '#B8B8B8',
@@ -25,7 +26,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['"Playfair Display"', 'Georgia', 'serif'],
+        heading: ['Montserrat', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {

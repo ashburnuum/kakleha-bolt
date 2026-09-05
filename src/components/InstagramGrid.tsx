@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Heart, Instagram } from 'lucide-react';
 
 const posts = [
-  { likes: 342 },
-  { likes: 891 },
-  { likes: 567 },
-  { likes: 234 },
-  { likes: 1205 },
-  { likes: 456 },
+  { likes: 342, image: 'https://images.pexels.com/photos/17349806/pexels-photo-17349806.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { likes: 891, image: 'https://images.pexels.com/photos/5991638/pexels-photo-5991638.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { likes: 567, image: 'https://images.pexels.com/photos/19549268/pexels-photo-19549268.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { likes: 234, image: 'https://images.pexels.com/photos/1217253/pexels-photo-1217253.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { likes: 1205, image: 'https://images.pexels.com/photos/33539326/pexels-photo-33539326.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { likes: 456, image: 'https://images.pexels.com/photos/31841220/pexels-photo-31841220.jpeg?auto=compress&cs=tinysrgb&w=400' },
 ];
 
 export default function InstagramGrid() {
@@ -24,8 +24,8 @@ export default function InstagramGrid() {
             <Instagram size={16} className="text-ms-gold" />
             <p className="text-xs tracking-[0.2em] uppercase text-ms-gold">Instagram</p>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ms-charcoal">
-            Tag Kami <span className="italic text-ms-gold">@MardinaSafiyya</span>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">
+            Tag Us <span className="text-ms-gold">@MardinaSafiyya</span>
           </h2>
         </motion.div>
 
@@ -38,11 +38,14 @@ export default function InstagramGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
-              className="group relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-ms-champagne"
+              className="group relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-ms-grey-muted/20 text-xs">IG</span>
-              </div>
+              <img
+                src={post.image}
+                alt="Instagram post"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                 <div className="flex items-center gap-1.5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <Heart size={16} className="fill-white" />

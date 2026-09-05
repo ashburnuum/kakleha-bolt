@@ -65,9 +65,9 @@ export default function ReviewsWaterfall() {
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-14"
         >
-          <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Testimoni</p>
-          <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ms-charcoal mb-3">
-            Apa Kata Pelanggan Kami
+          <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Testimonials</p>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal mb-3">
+            What Our Customers Say
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="flex items-center gap-0.5">
@@ -75,7 +75,7 @@ export default function ReviewsWaterfall() {
                 <Star key={i} size={14} className="text-ms-gold fill-ms-gold" />
               ))}
             </div>
-            <span className="text-sm text-ms-grey">4.9 daripada 2,400+ ulasan</span>
+            <span className="text-sm text-ms-grey">4.9 from 2,400+ reviews</span>
           </div>
         </motion.div>
 

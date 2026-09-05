@@ -16,14 +16,14 @@ export default function NewArrivals() {
           className="flex items-end justify-between mb-10 sm:mb-14"
         >
           <div>
-            <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Terkini</p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ms-charcoal">Baru Tiba</h2>
+            <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Just Dropped</p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">New Arrivals</h2>
           </div>
           <a
             href="#"
             className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-ms-grey hover:text-ms-gold transition-colors group"
           >
-            Lihat Semua
+            View All
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
@@ -47,7 +47,7 @@ export default function NewArrivals() {
             href="#"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-ms-grey hover:text-ms-gold transition-colors"
           >
-            Lihat Semua
+            View All
             <ArrowRight size={14} />
           </a>
         </div>

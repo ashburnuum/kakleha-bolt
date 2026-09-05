@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Search, User, ShoppingBag } from 'lucide-react';
+import { Menu, X, Search, User } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { brandConfig } from '@/config/brand';
 import { useCart } from '@/context/CartContext';
+import CartBagIcon from '@/components/CartBagIcon';
 
 const navLinks = [
   { label: 'Shop', href: '#collections' },
-  { label: 'Koleksi', href: '#collections' },
-  { label: 'Baru', href: '#new-arrivals' },
-  { label: 'Tentang Kami', href: '#about' },
+  { label: 'Collections', href: '#collections' },
+  { label: 'New In', href: '#new-arrivals' },
+  { label: 'About', href: '#about' },
 ];
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
   const { openCart, itemCount } = useCart();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -33,20 +34,18 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-xl shadow-sm border-b border-ms-champagne'
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-ms-champagne'
+          : 'bg-white border-b border-ms-champagne/60'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-[72px]">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 transition-colors ${
-              scrolled ? 'text-ms-charcoal' : 'text-white'
-            }`}
-            aria-label={menuOpen ? 'Tutup menu' : 'Buka menu'}
+            className="lg:hidden p-2 text-ms-charcoal hover:text-ms-gold transition-colors"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -56,11 +55,7 @@ export default function Header() {
               <a
                 key={link.href + link.label}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide uppercase transition-colors ${
-                  scrolled
-                    ? 'text-ms-grey hover:text-ms-charcoal'
-                    : 'text-white/80 hover:text-white'
-                }`}
+                className="text-[13px] font-medium tracking-[0.08em] uppercase text-ms-charcoal-light hover:text-ms-gold transition-colors"
               >
                 {link.label}
               </a>
@@ -69,9 +64,7 @@ export default function Header() {
 
           <a
             href="#"
-            className={`font-heading text-xl sm:text-2xl lg:text-[26px] font-semibold tracking-wide transition-colors ${
-              scrolled ? 'text-ms-charcoal' : 'text-white'
-            }`}
+            className="font-heading text-xl sm:text-2xl lg:text-[26px] font-bold tracking-wide text-ms-charcoal"
           >
             {brandConfig.name}
           </a>
@@ -81,11 +74,7 @@ export default function Header() {
               <a
                 key={link.href + link.label}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide uppercase transition-colors ${
-                  scrolled
-                    ? 'text-ms-grey hover:text-ms-charcoal'
-                    : 'text-white/80 hover:text-white'
-                }`}
+                className="text-[13px] font-medium tracking-[0.08em] uppercase text-ms-charcoal-light hover:text-ms-gold transition-colors"
               >
                 {link.label}
               </a>
@@ -94,29 +83,23 @@ export default function Header() {
 
           <div className="flex items-center gap-1 sm:gap-3">
             <button
-              className={`p-2 transition-colors hidden sm:block ${
-                scrolled ? 'text-ms-charcoal hover:text-ms-gold' : 'text-white/80 hover:text-white'
-              }`}
-              aria-label="Cari"
+              className="p-2 text-ms-charcoal hover:text-ms-gold transition-colors hidden sm:block"
+              aria-label="Search"
             >
               <Search size={20} />
             </button>
             <button
-              className={`p-2 transition-colors hidden sm:block ${
-                scrolled ? 'text-ms-charcoal hover:text-ms-gold' : 'text-white/80 hover:text-white'
-              }`}
-              aria-label="Akaun"
+              className="p-2 text-ms-charcoal hover:text-ms-gold transition-colors hidden sm:block"
+              aria-label="Account"
             >
               <User size={20} />
             </button>
             <button
               onClick={openCart}
-              className={`p-2 transition-colors relative ${
-                scrolled ? 'text-ms-charcoal hover:text-ms-gold' : 'text-white/80 hover:text-white'
-              }`}
-              aria-label="Beg belanja"
+              className="p-2 text-ms-charcoal hover:text-ms-gold transition-colors relative"
+              aria-label="Shopping bag"
             >
-              <ShoppingBag size={20} />
+              <CartBagIcon size={22} />
               {itemCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-ms-gold text-white text-[10px] font-bold flex items-center justify-center">
                   {itemCount}
@@ -137,10 +120,10 @@ export default function Header() {
             className="fixed inset-0 top-0 z-40 bg-white lg:hidden"
           >
             <div className="flex items-center justify-between h-16 px-4 border-b border-ms-champagne">
-              <span className="font-heading text-xl font-semibold text-ms-charcoal">
+              <span className="font-heading text-xl font-bold text-ms-charcoal">
                 {brandConfig.name}
               </span>
-              <button onClick={() => setMenuOpen(false)} className="p-2 text-ms-charcoal" aria-label="Tutup">
+              <button onClick={() => setMenuOpen(false)} className="p-2 text-ms-charcoal" aria-label="Close">
                 <X size={22} />
               </button>
             </div>

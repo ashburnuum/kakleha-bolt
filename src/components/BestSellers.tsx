@@ -8,17 +8,14 @@ const bestSellers = products.filter((p) => p.isBestSeller);
 export default function BestSellers() {
   return (
     <section id="best-sellers" className="py-16 sm:py-20 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex items-end justify-between mb-10 sm:mb-14"
         >
-          <div>
-            <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Most Popular</p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">Best Sellers</h2>
-          </div>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">Best Sellers</h2>
           <a
             href="#"
             className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-ms-grey hover:text-ms-gold transition-colors group"

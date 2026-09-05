@@ -39,16 +39,15 @@ export default function UGCCarousel() {
 
   return (
     <section className="py-16 sm:py-20 bg-ms-ivory">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">Customer Style</p>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">
-            Their Style, <span className="text-ms-gold">Your</span> Inspiration
+            Styled by Our Customers
           </h2>
         </motion.div>
       </div>
@@ -63,12 +62,12 @@ export default function UGCCarousel() {
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
-          className="flex gap-4 overflow-x-hidden scrollbar-hide px-4"
+          className="flex gap-4 overflow-x-auto scrollbar-hide px-4 touch-pan-x"
         >
           {doubled.map((item, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] aspect-[3/4] rounded-2xl relative overflow-hidden group"
+              className="flex-shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] aspect-[3/4] rounded-md relative overflow-hidden group"
             >
               <img
                 src={item.image}

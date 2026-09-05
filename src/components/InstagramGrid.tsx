@@ -13,19 +13,16 @@ const posts = [
 export default function InstagramGrid() {
   return (
     <section className="py-16 sm:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="flex items-center justify-center gap-3 mb-10"
         >
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <Instagram size={16} className="text-ms-gold" />
-            <p className="text-xs tracking-[0.2em] uppercase text-ms-gold">Instagram</p>
-          </div>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal">
-            Tag Us <span className="text-ms-gold">@MardinaSafiyya</span>
+          <Instagram size={20} className="text-ms-charcoal" />
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-ms-charcoal">
+            @MardinaSafiyya
           </h2>
         </motion.div>
 
@@ -38,7 +35,7 @@ export default function InstagramGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
-              className="group relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden"
+              className="group relative aspect-square rounded-sm overflow-hidden"
             >
               <img
                 src={post.image}

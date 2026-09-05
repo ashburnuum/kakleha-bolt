@@ -6,27 +6,19 @@ const mediaOutlets = [
 
 export default function AsSeenOn() {
   return (
-    <section className="py-12 sm:py-16 bg-white border-b border-ms-champagne/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-xs tracking-[0.2em] uppercase text-ms-grey-light mb-8"
-        >
-          As Seen On
-        </motion.p>
+    <section className="py-10 sm:py-14 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-8 sm:gap-12 lg:gap-16 flex-wrap">
           {mediaOutlets.map((name, i) => (
             <motion.div
               key={name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               className="flex items-center justify-center"
             >
-              <span className="text-sm sm:text-base font-heading font-semibold text-ms-grey-muted tracking-wider select-none">
+              <span className="text-sm sm:text-base font-heading font-semibold text-ms-grey-muted/60 tracking-[0.1em] uppercase select-none">
                 {name}
               </span>
             </motion.div>

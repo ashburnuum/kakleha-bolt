@@ -1,19 +1,18 @@
 import { motion } from 'framer-motion';
-import { Gem, Heart, MapPin } from 'lucide-react';
 
 const pillars = [
   {
-    icon: Gem,
+    number: '01',
     title: 'Premium Fabrics',
     description: 'Every fabric is carefully selected for all-day comfort — soft on the skin, breathable, and long-lasting.',
   },
   {
-    icon: Heart,
+    number: '02',
     title: 'Modest by Design',
     description: 'Cuts that celebrate modesty without sacrificing style. Designed for women who want to look elegant and confident.',
   },
   {
-    icon: MapPin,
+    number: '03',
     title: 'Made For Malaysian Women',
     description: 'We understand local body types and lifestyles. Every piece is designed with cultural sensitivity and tropical comfort in mind.',
   },
@@ -21,14 +20,14 @@ const pillars = [
 
 export default function WhySection() {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-ms-ivory">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="aspect-[4/5] rounded-3xl overflow-hidden relative order-2 lg:order-1"
+            className="aspect-[4/5] rounded-md overflow-hidden relative order-2 lg:order-1"
           >
             <img
               src="https://images.pexels.com/photos/6700500/pexels-photo-6700500.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -44,42 +43,33 @@ export default function WhySection() {
             viewport={{ once: true }}
             className="order-1 lg:order-2"
           >
-            <p className="text-xs tracking-[0.2em] uppercase text-ms-gold mb-3">About Us</p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal mb-8 leading-tight">
-              Why <span className="text-ms-gold">Mardina Safiyya</span>?
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-ms-charcoal mb-4 leading-tight">
+              Why Mardina Safiyya?
             </h2>
+            <p className="text-ms-grey leading-relaxed mb-10 max-w-md">
+              We believe modest fashion should never mean compromising on quality, comfort, or elegance.
+            </p>
 
             <div className="space-y-8">
               {pillars.map((pillar, i) => (
                 <motion.div
-                  key={pillar.title}
+                  key={pillar.number}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="flex gap-4"
+                  className="flex gap-5"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-ms-gold/10 flex items-center justify-center flex-shrink-0">
-                    <pillar.icon size={20} className="text-ms-gold" />
-                  </div>
-                  <div>
+                  <span className="font-heading text-3xl sm:text-4xl font-bold text-ms-gold/30 leading-none flex-shrink-0 w-12">
+                    {pillar.number}
+                  </span>
+                  <div className="border-l border-ms-champagne pl-5">
                     <h3 className="font-heading text-lg font-semibold text-ms-charcoal mb-1.5">{pillar.title}</h3>
                     <p className="text-sm text-ms-grey leading-relaxed">{pillar.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
-
-            <motion.a
-              href="#"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="inline-block mt-8 text-sm font-medium text-ms-charcoal hover:text-ms-gold transition-colors tracking-wide uppercase underline underline-offset-4"
-            >
-              Learn More
-            </motion.a>
           </motion.div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function PreHeader() {
   const Icon = current.icon;
 
   return (
-    <div className="bg-ms-gold text-white text-xs py-2.5 px-4 overflow-hidden relative z-50">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-ms-charcoal text-white text-xs py-2 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -33,8 +33,8 @@ export default function PreHeader() {
             transition={{ duration: 0.3 }}
             className="flex items-center gap-2"
           >
-            <Icon size={13} className="flex-shrink-0" />
-            <span className="tracking-wide font-medium">{current.text}</span>
+            <Icon size={12} className="text-ms-gold-light flex-shrink-0" />
+            <span className="tracking-wider font-medium">{current.text}</span>
           </motion.div>
         </AnimatePresence>
       </div>

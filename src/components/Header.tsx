@@ -6,9 +6,9 @@ import { useCart } from '@/context/CartContext';
 import CartBagIcon from '@/components/CartBagIcon';
 
 const navLinks = [
-  { label: 'Shop', href: '#collections' },
-  { label: 'Collections', href: '#collections' },
+  { label: 'Shop All', href: '#collections' },
   { label: 'New In', href: '#new-arrivals' },
+  { label: 'Best Sellers', href: '#best-sellers' },
   { label: 'About', href: '#about' },
 ];
 
@@ -18,7 +18,7 @@ export default function Header() {
   const { openCart, itemCount } = useCart();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -34,17 +34,19 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`fixed top-[28px] left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-ms-champagne'
-          : 'bg-white border-b border-ms-champagne/60'
+          ? 'bg-white/95 backdrop-blur-xl shadow-sm'
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 text-ms-charcoal hover:text-ms-gold transition-colors"
+            className={`lg:hidden p-2 transition-colors ${
+              scrolled ? 'text-ms-charcoal' : 'text-white'
+            }`}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -53,9 +55,13 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.slice(0, 2).map((link) => (
               <a
-                key={link.href + link.label}
+                key={link.label}
                 href={link.href}
-                className="text-[13px] font-medium tracking-[0.08em] uppercase text-ms-charcoal-light hover:text-ms-gold transition-colors"
+                className={`text-[13px] font-medium tracking-[0.08em] uppercase transition-colors ${
+                  scrolled
+                    ? 'text-ms-charcoal-light hover:text-ms-gold'
+                    : 'text-white/80 hover:text-white'
+                }`}
               >
                 {link.label}
               </a>
@@ -64,7 +70,9 @@ export default function Header() {
 
           <a
             href="#"
-            className="font-heading text-xl sm:text-2xl lg:text-[26px] font-bold tracking-wide text-ms-charcoal"
+            className={`font-heading text-xl sm:text-2xl lg:text-[26px] font-bold tracking-wide transition-colors ${
+              scrolled ? 'text-ms-charcoal' : 'text-white'
+            }`}
           >
             {brandConfig.name}
           </a>
@@ -72,9 +80,13 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.slice(2).map((link) => (
               <a
-                key={link.href + link.label}
+                key={link.label}
                 href={link.href}
-                className="text-[13px] font-medium tracking-[0.08em] uppercase text-ms-charcoal-light hover:text-ms-gold transition-colors"
+                className={`text-[13px] font-medium tracking-[0.08em] uppercase transition-colors ${
+                  scrolled
+                    ? 'text-ms-charcoal-light hover:text-ms-gold'
+                    : 'text-white/80 hover:text-white'
+                }`}
               >
                 {link.label}
               </a>
@@ -83,20 +95,26 @@ export default function Header() {
 
           <div className="flex items-center gap-1 sm:gap-3">
             <button
-              className="p-2 text-ms-charcoal hover:text-ms-gold transition-colors hidden sm:block"
+              className={`p-2 transition-colors hidden sm:block ${
+                scrolled ? 'text-ms-charcoal hover:text-ms-gold' : 'text-white/80 hover:text-white'
+              }`}
               aria-label="Search"
             >
               <Search size={20} />
             </button>
             <button
-              className="p-2 text-ms-charcoal hover:text-ms-gold transition-colors hidden sm:block"
+              className={`p-2 transition-colors hidden sm:block ${
+                scrolled ? 'text-ms-charcoal hover:text-ms-gold' : 'text-white/80 hover:text-white'
+              }`}
               aria-label="Account"
             >
               <User size={20} />
             </button>
             <button
               onClick={openCart}
-              className="p-2 text-ms-charcoal hover:text-ms-gold transition-colors relative"
+              className={`p-2 transition-colors relative ${
+                scrolled ? 'text-ms-charcoal hover:text-ms-gold' : 'text-white/80 hover:text-white'
+              }`}
               aria-label="Shopping bag"
             >
               <CartBagIcon size={22} />
@@ -130,7 +148,7 @@ export default function Header() {
             <nav className="flex flex-col px-6 py-8 gap-1">
               {navLinks.map((link) => (
                 <a
-                  key={link.href + link.label}
+                  key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="py-4 text-lg font-heading font-medium text-ms-charcoal hover:text-ms-gold transition-colors border-b border-ms-champagne/50"
